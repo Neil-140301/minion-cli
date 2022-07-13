@@ -1,0 +1,40 @@
+{
+	"name": "minion-cli",
+	"description": "An easy cli to set up new dev projects",
+	"version": "0.0.3",
+	"license": "UNLICENSED",
+	"main": "index.js",
+	"bin": {
+		"minion": "index.js"
+	},
+	"type": "module",
+	"author": {
+		"name": "Neil Alvares",
+		"email": "alvaresneil2001@outlook.com",
+		"url": "https://github.com/Neil-140301"
+	},
+	"keywords": [
+		"minion-cli",
+		"Neil Alvares"
+	],
+	"scripts": {
+		"format": "prettier --write \"./**/*.{js,json,ts}\"",
+		"build": "tsc -p ."
+	},
+	"dependencies": {
+		"chalk": "^4.1.2",
+		"cli-alerts": "^1.2.2",
+		"cli-handle-error": "^4.4.0",
+		"cli-handle-unhandled": "^1.1.1",
+		"cli-meow-help": "^3.1.0",
+		"cli-welcome": "^2.2.2",
+		"inquirer": "^9.0.0",
+		"meow": "^9.0.0"
+	},
+	"devDependencies": {
+		"@types/inquirer": "^8.2.1",
+		"@types/node": "^18.0.3",
+		"prettier": "^2.7.1",
+		"typescript": "^4.7.4"
+	}
+}
