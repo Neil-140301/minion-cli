@@ -105,7 +105,7 @@ export const withCRA = (path: string, redux: boolean = false) => {
 
 	// change counterSlice
 	if (redux) {
-		const counterSlice = readFileSync(`React/cra/sample_slice.txt`);
+		const counterSlice = readFileSync(`React/cra/sample_slice.js`);
 		writeFileSync(`${projectPath}/src/redux/counterSlice.js`, counterSlice);
 	}
 
