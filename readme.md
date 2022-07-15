@@ -1,4 +1,4 @@
-# MINION-CLI
+# minion-cli
 
 An easy cli to quickly set up your dev projects with a framework of your choice.
 
