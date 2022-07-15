@@ -17,18 +17,16 @@ import chalk from 'chalk';
 
 const input: string[] = cli.input;
 const flags = cli.flags;
-const { clear, debug } = flags;
+const { debug } = flags;
 
 (async () => {
-	init({ clear });
+	init({});
 
 	if (input.length === 0 || input.includes('help')) return cli.showHelp(0);
 	debug && log(flags);
 
 	// if selected React
 	let reactProject: ReactProject;
-	let expoProject: ExpoProject;
-	let nodeProject: NodeProject;
 
 	if (input[0] !== 'init') return;
 	const { type } = await startNewProject();

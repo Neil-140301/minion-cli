@@ -21,11 +21,11 @@ const projectTypeQuestions = [
 ];
 
 const reactQuestions = [
-	{
-		type: 'input',
-		name: 'name',
-		message: 'Project name:'
-	},
+	// {
+	// 	type: 'input',
+	// 	name: 'name',
+	// 	message: 'Project name:'
+	// },
 	{
 		type: 'input',
 		name: 'path',
