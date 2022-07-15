@@ -18,7 +18,7 @@ export const initReactProject = ({
 			console.log(
 				chalk.bold(
 					chalk.green(
-						chalk.bgBlack('\n. setting up project template.\n')
+						chalk.bgBlack('\nSetting up project template.\n')
 					)
 				)
 			);
@@ -27,7 +27,7 @@ export const initReactProject = ({
 				console.log(
 					chalk.bold(
 						chalk.bgBlack(
-							chalk.green('\n. Adding Tailwind css.\n')
+							chalk.green('\nAdding Tailwind css.\n')
 						)
 					)
 				);
@@ -36,7 +36,7 @@ export const initReactProject = ({
 				console.log(
 					chalk.bold(
 						chalk.bgBlack(
-							chalk.green('\n. Adding styled-components.\n')
+							chalk.green('\nAdding styled-components.\n')
 						)
 					)
 				);
@@ -47,7 +47,7 @@ export const initReactProject = ({
 				console.log(
 					chalk.bold(
 						chalk.bgBlack(
-							chalk.green('\n. Adding react router.\n')
+							chalk.green('\nAdding react router.\n')
 						)
 					)
 				);

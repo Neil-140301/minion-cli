@@ -148,7 +148,7 @@ export const withTypeScript = (path: string, redux: boolean = false) => {
 		const appData = readFileSync(`${projectPath}/src/App.tsx`, 'utf8');
 		writeFileSync(
 			`${projectPath}/src/App.tsx`,
-			removeLines(appData, [1, 2, 7, 10])
+			removeLines(appData, [1, 2, 9, 10])
 		);
 		writeFileSync(
 			`${projectPath}/src/index.tsx`,
@@ -194,6 +194,12 @@ export const withTypeScript = (path: string, redux: boolean = false) => {
 			"import counterReducer from './counterSlice';"
 		)
 	);
+
+	// change counterSlice
+	if (redux) {
+		const counterSlice = readFileSync(`React/cra/sample_slice_ts.js`);
+		writeFileSync(`${projectPath}/src/redux/counterSlice.ts`, counterSlice);
+	}
 
 	// create components and pages
 	npm.cwd(`${projectPath}/src`).cmd(`mkdir components`);
