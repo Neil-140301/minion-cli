@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import alert from 'cli-alerts';
 
 export default info => {
@@ -9,4 +10,13 @@ export default info => {
 
 	console.log(info);
 	console.log();
+};
+
+export const endCredits = () => {
+	console.log(
+		chalk.whiteBright(
+			`🎉🎉 Yay! You shiny new project is ready!\nInside your project folder, run:`
+		)
+	);
+	console.log(chalk.bold(chalk.blue(`\nyarn start\n`)));
 };

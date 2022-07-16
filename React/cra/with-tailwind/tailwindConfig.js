@@ -1,4 +1,4 @@
-module.exports = {
+export const tailwind_config = `module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
@@ -6,4 +6,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-}
+}`;

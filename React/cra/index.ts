@@ -8,6 +8,7 @@ import {
 	writeFileSync,
 	renameSync
 } from 'fs';
+import { sample_slice, sample_slice_ts } from './sample_slice.js';
 
 const npm = new NPM();
 const base = process.cwd();
@@ -30,7 +31,9 @@ export const withCRA = (path: string, redux: boolean = false) => {
 
 	// create a new project
 	npm.cmd(
-		`yarn create react-app ${redux && '--template redux'} ${projectPath}`
+		`yarn create react-app ${
+			redux ? '--template redux' : ''
+		} ${projectPath}`
 	);
 
 	// clean up project
@@ -77,36 +80,35 @@ export const withCRA = (path: string, redux: boolean = false) => {
 		);
 	}
 
-	// rename app -> redux
-	renameSync(`${projectPath}/src/app`, `${projectPath}/src/redux`);
-	copyFileSync(
-		`${projectPath}/src/features/counter/counterSlice.js`,
-		`${projectPath}/src/redux/counterSlice.js`
-	);
-	rmSync(`${projectPath}/src/features`, {
-		recursive: true,
-		force: true
-	});
-
-	// change the import path for counter slice
-	const reduxStoreData = readFileSync(
-		`${projectPath}/src/redux/store.js`,
-		'utf8'
-	);
-
-	writeFileSync(
-		`${projectPath}/src/redux/store.js`,
-		changeImport(
-			reduxStoreData,
-			1,
-			"import counterReducer from './counterSlice';"
-		)
-	);
-
-	// change counterSlice
 	if (redux) {
-		const counterSlice = readFileSync(`React/cra/sample_slice.js`);
-		writeFileSync(`${projectPath}/src/redux/counterSlice.js`, counterSlice);
+		// rename app -> redux
+		renameSync(`${projectPath}/src/app`, `${projectPath}/src/redux`);
+		copyFileSync(
+			`${projectPath}/src/features/counter/counterSlice.js`,
+			`${projectPath}/src/redux/counterSlice.js`
+		);
+		rmSync(`${projectPath}/src/features`, {
+			recursive: true,
+			force: true
+		});
+
+		// change the import path for counter slice
+		const reduxStoreData = readFileSync(
+			`${projectPath}/src/redux/store.js`,
+			'utf8'
+		);
+
+		writeFileSync(
+			`${projectPath}/src/redux/store.js`,
+			changeImport(
+				reduxStoreData,
+				1,
+				"import counterReducer from './counterSlice';"
+			)
+		);
+
+		// change counterSlice
+		writeFileSync(`${projectPath}/src/redux/counterSlice.js`, sample_slice);
 	}
 
 	// create components and pages
@@ -170,35 +172,37 @@ export const withTypeScript = (path: string, redux: boolean = false) => {
 	}
 
 	// rename app -> redux
-	renameSync(`${projectPath}/src/app`, `${projectPath}/src/redux`);
-	copyFileSync(
-		`${projectPath}/src/features/counter/counterSlice.ts`,
-		`${projectPath}/src/redux/counterSlice.ts`
-	);
-	rmSync(`${projectPath}/src/features`, {
-		recursive: true,
-		force: true
-	});
-
-	// change the import path for counter slice
-	const reduxStoreData = readFileSync(
-		`${projectPath}/src/redux/store.ts`,
-		'utf8'
-	);
-
-	writeFileSync(
-		`${projectPath}/src/redux/store.ts`,
-		changeImport(
-			reduxStoreData,
-			1,
-			"import counterReducer from './counterSlice';"
-		)
-	);
-
-	// change counterSlice
 	if (redux) {
-		const counterSlice = readFileSync(`React/cra/sample_slice_ts.js`);
-		writeFileSync(`${projectPath}/src/redux/counterSlice.ts`, counterSlice);
+		renameSync(`${projectPath}/src/app`, `${projectPath}/src/redux`);
+		copyFileSync(
+			`${projectPath}/src/features/counter/counterSlice.ts`,
+			`${projectPath}/src/redux/counterSlice.ts`
+		);
+		rmSync(`${projectPath}/src/features`, {
+			recursive: true,
+			force: true
+		});
+
+		// change the import path for counter slice
+		const reduxStoreData = readFileSync(
+			`${projectPath}/src/redux/store.ts`,
+			'utf8'
+		);
+
+		writeFileSync(
+			`${projectPath}/src/redux/store.ts`,
+			changeImport(
+				reduxStoreData,
+				1,
+				"import counterReducer from './counterSlice';"
+			)
+		);
+
+		// change counterSlice
+		writeFileSync(
+			`${projectPath}/src/redux/counterSlice.ts`,
+			sample_slice_ts
+		);
 	}
 
 	// create components and pages

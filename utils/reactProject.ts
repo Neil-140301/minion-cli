@@ -4,6 +4,7 @@ import { withCRA, withTypeScript } from '../React/cra/index.js';
 import { withRouter } from '../React/cra/with-router/index.js';
 import { withStyledComponents } from '../React/cra/with-styled-components/index.js';
 import { withTailwind } from '../React/cra/with-tailwind/index.js';
+import { endCredits } from './log.js';
 
 export const initReactProject = ({
 	path,
@@ -27,7 +28,7 @@ export const initReactProject = ({
 			} else {
 				withCRA(path, redux);
 			}
-			
+
 			if (style === 'tw') {
 				console.log(
 					chalk.bold(
@@ -70,4 +71,6 @@ export const initReactProject = ({
 			);
 			break;
 	}
+
+	endCredits();
 };
