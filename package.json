@@ -1,7 +1,7 @@
 {
 	"name": "minion-cli",
 	"description": "An easy cli to set up new dev projects",
-	"version": "0.1.1",
+	"version": "0.1.3",
 	"license": "UNLICENSED",
 	"bin": {
 		"minion": "index.js"
@@ -12,13 +12,17 @@
 		"email": "alvaresneil2001@outlook.com",
 		"url": "https://github.com/Neil-140301"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Neil-140301/minion-cli.git"
+	},
 	"keywords": [
 		"minion-cli",
 		"Neil Alvares"
 	],
 	"scripts": {
 		"format": "prettier --write \"./**/*.{js,json,ts}\"",
-		"build": "rm -rf build && tsc -p .",
+		"build": "rm -rf build && tsc -p . && cp readme.md build/README.md",
 		"pub": "cd build && npm publish"
 	},
 	"dependencies": {
