@@ -22,13 +22,16 @@ export const initReactProject = ({
 					)
 				)
 			);
-			typescript ? withTypeScript(path, redux) : withCRA(path, redux);
+			if (typescript) {
+				withTypeScript(path, redux);
+			} else {
+				withCRA(path, redux);
+			}
+			
 			if (style === 'tw') {
 				console.log(
 					chalk.bold(
-						chalk.bgBlack(
-							chalk.green('\nAdding Tailwind css.\n')
-						)
+						chalk.bgBlack(chalk.green('\nAdding Tailwind css.\n'))
 					)
 				);
 				withTailwind(path);
@@ -46,9 +49,7 @@ export const initReactProject = ({
 			if (routing) {
 				console.log(
 					chalk.bold(
-						chalk.bgBlack(
-							chalk.green('\nAdding react router.\n')
-						)
+						chalk.bgBlack(chalk.green('\nAdding react router.\n'))
 					)
 				);
 				withRouter(path, typescript);
