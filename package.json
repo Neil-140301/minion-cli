@@ -1,7 +1,7 @@
 {
 	"name": "minion-cli",
 	"description": "An easy cli to set up new dev projects",
-	"version": "0.0.8",
+	"version": "0.1.0",
 	"license": "UNLICENSED",
 	"bin": {
 		"minion": "index.js"
