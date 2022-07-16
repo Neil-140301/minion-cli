@@ -8,23 +8,11 @@ import {
 	writeFileSync,
 	renameSync
 } from 'fs';
-import { sample_slice, sample_slice_ts } from './sample_slice.js';
+import { sample_slice, sample_slice_ts } from '../sample_slice.js';
+import { changeImport, removeLines } from '../../utils/helper.js';
 
 const npm = new NPM();
 const base = process.cwd();
-
-const changeImport = (data: string, idx: number, content: string) => {
-	let arr = data.split('\n');
-	arr.splice(idx, 1, content);
-	return arr.join('\n');
-};
-
-const removeLines = (data: string, lines: number[] = []) => {
-	return data
-		.split('\n')
-		.filter((_, idx) => !lines.includes(idx))
-		.join('\n');
-};
 
 export const withCRA = (path: string, redux: boolean = false) => {
 	const projectPath = join(base, path);
@@ -55,8 +43,8 @@ export const withCRA = (path: string, redux: boolean = false) => {
 	}
 
 	const data = readFileSync(`${projectPath}/src/index.js`, 'utf8');
+	const appData = readFileSync(`${projectPath}/src/App.js`, 'utf8');
 	if (redux) {
-		const appData = readFileSync(`${projectPath}/src/App.js`, 'utf8');
 		writeFileSync(
 			`${projectPath}/src/App.js`,
 			removeLines(appData, [1, 2, 9, 10])
@@ -77,6 +65,10 @@ export const withCRA = (path: string, redux: boolean = false) => {
 		writeFileSync(
 			`${projectPath}/src/index.js`,
 			removeLines(data, [4, 13, 14, 15, 16])
+		);
+		writeFileSync(
+			`${projectPath}/src/App.js`,
+			removeLines(appData, [1, 8])
 		);
 	}
 
@@ -145,9 +137,8 @@ export const withTypeScript = (path: string, redux: boolean = false) => {
 	}
 
 	const data = readFileSync(`${projectPath}/src/index.tsx`, 'utf8');
-
+	const appData = readFileSync(`${projectPath}/src/App.tsx`, 'utf8');
 	if (redux) {
-		const appData = readFileSync(`${projectPath}/src/App.tsx`, 'utf8');
 		writeFileSync(
 			`${projectPath}/src/App.tsx`,
 			removeLines(appData, [1, 2, 9, 10])
@@ -168,6 +159,10 @@ export const withTypeScript = (path: string, redux: boolean = false) => {
 		writeFileSync(
 			`${projectPath}/src/index.tsx`,
 			removeLines(data, [4, 15, 16, 17, 18])
+		);
+		writeFileSync(
+			`${projectPath}/src/App.tsx`,
+			removeLines(appData, [1, 8])
 		);
 	}
 

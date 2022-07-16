@@ -1,18 +1,10 @@
 import { join } from 'path';
 import { NPM } from '../../../runner/index.js';
 import { readFileSync, unlinkSync, writeFileSync } from 'fs';
+import { addBrowserRouter } from '../../../utils/helper.js';
 
 const npm = new NPM();
 const base = process.cwd();
-
-const addBrowserRouter = (data: string) => {
-	let arr = data.split('\n');
-	arr.splice(4, 0, 'import { BrowserRouter } from "react-router-dom";');
-	let idx = arr.findIndex(x => x.includes('<App />'));
-	arr.splice(idx, 1, '  <BrowserRouter>\n    <App />\n  </BrowserRouter>');
-
-	return arr.join('\n');
-};
 
 export const withRouter = (path: string, typescript: boolean = false) => {
 	const projectPath = join(base, path);

@@ -14,9 +14,6 @@ export default info => {
 
 export const endCredits = () => {
 	console.log(
-		chalk.whiteBright(
-			`🎉🎉 Yay! You shiny new project is ready!\nInside your project folder, run:`
-		)
+		chalk.whiteBright(`\n🎉🎉 Yay! You shiny new project is ready!`)
 	);
-	console.log(chalk.bold(chalk.blue(`\nyarn start\n`)));
 };

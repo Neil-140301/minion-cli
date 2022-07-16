@@ -35,7 +35,7 @@ const reactQuestions = [
 		type: 'list',
 		name: 'framework',
 		message: 'Project framework:',
-		default: 'cra',
+		default: 'next',
 		choices: ['cra', 'next', 'vite']
 	},
 	{
@@ -67,7 +67,7 @@ const reactQuestions = [
 	{
 		type: 'confirm',
 		name: 'routing',
-		message: 'use react-router:',
+		message: 'use react-router(CRA only):',
 		default: false
 	},
 	{
