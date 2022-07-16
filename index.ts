@@ -14,12 +14,14 @@ import { newReactProject, startNewProject } from './prompts/init.js';
 import type { ExpoProject, NodeProject, ReactProject } from './cli.types';
 import { initReactProject } from './utils/reactProject.js';
 import chalk from 'chalk';
+import { NPM } from './runner/index.js';
 
 const input: string[] = cli.input;
 const flags = cli.flags;
 const { debug } = flags;
 
 (async () => {
+	new NPM().output(false).installYarn();
 	init({});
 
 	if (input.length === 0 || input.includes('help')) return cli.showHelp(0);

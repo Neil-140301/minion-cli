@@ -46,6 +46,14 @@ export class NPM {
 		return this;
 	}
 
+	installYarn() {
+		try {
+			return execSync('npm i -g yarn', this.options).toString();
+		} catch (e) {
+			return null;
+		}
+	}
+
 	cmd(command = '') {
 		try {
 			return execSync(command, this.options).toString();
