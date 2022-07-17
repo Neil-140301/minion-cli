@@ -2,21 +2,11 @@ name: minion-cli Package
 
 on:
     release:
-        types: [created]
+        types: [created, edited]
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
-              with:
-                  node-version: 14
-            - run: npm ci
-            - run: npm test
-
     publish-gpr:
-        needs: build
+        name: release
         runs-on: ubuntu-latest
         permissions:
             packages: write
@@ -26,8 +16,8 @@ jobs:
             - uses: actions/setup-node@v3
               with:
                   node-version: 14
-                  registry-url: https://npm.pkg.github.com/
-            - run: npm ci
+                  registry-url: https://registry.npmjs.org
+            - run: rm -rf node_modules && yarn install --frozen-lockfile
             - run: npm run build
             - working-directory: build
               run: npm publish
