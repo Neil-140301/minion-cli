@@ -21,6 +21,7 @@
 		"Neil Alvares"
 	],
 	"scripts": {
+		"test": "exit 0",
 		"format": "prettier --write \"./**/*.{js,json,ts}\"",
 		"build": "rm -rf build && tsc -p . && cp readme.md build/README.md",
 		"pub": "cd build && npm publish"
