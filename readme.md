@@ -1,8 +1,8 @@
 # minion-cli
 
-An easy cli to quickly set up your dev projects with a framework of your choice.
+An easy cli to quickly set up your dev projects with a framework and tools of your choice.
 
-[![asciicast](https://asciinema.org/a/509195.svg)](https://asciinema.org/a/509195)
+<img src="https://user-images.githubusercontent.com/74774395/179443630-92ecd7ef-37a6-49ab-b9fd-c3380b13ce09.gif" width="550px" alt="minion-cli" />
 
 ## Get Started
 
